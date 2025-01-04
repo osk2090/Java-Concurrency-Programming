@@ -1,9 +1,11 @@
 package io.concurrency.chapter02.exam02;
 
-public class MultiThreadAppTerminatedExample {
+public class SynchronizeTest {
     public static void main(String[] args) {
-        for (int i = 0; i < 3; i++) {
+
+        for (int i = 0; i < 10; i++) {
             Thread thread = new Thread(new MyRunnable(i));
+
             thread.start();
         }
 
@@ -21,19 +23,16 @@ public class MultiThreadAppTerminatedExample {
         @Override
         public void run() {
             System.out.println(Thread.currentThread().getName() + " : 스레드 실행 중..");
-            firstMethod(threadId);
+            new Counter().increment(threadId);
         }
+    }
 
-        private void firstMethod(int threadId) {
-            int localValue = threadId + 100;
-            secondMethod(localValue);
+    static class Counter {
+        private int count = 0;
 
-        }
-
-        private void secondMethod(int localValue) {
-            String objectReference = threadId + " : Hello World";
-            System.out.println(objectReference);
-            System.out.println(Thread.currentThread().getName() + " : 스레드 ID : " + threadId + ", Value : " + localValue);
+        private void increment(int threadId) {
+            count++;
+            System.out.println(threadId + " : " + count);
         }
     }
 }
