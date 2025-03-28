@@ -31,7 +31,7 @@ public class ThreadAliveExample {
             System.out.println("작업 스레드 1 상태:  " + task1.isAlive());
             System.out.println("작업 스레드 2 상태:  " + task2.isAlive());
             try {
-                Thread.sleep(500);
+                Thread.sleep(100000000000L);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
