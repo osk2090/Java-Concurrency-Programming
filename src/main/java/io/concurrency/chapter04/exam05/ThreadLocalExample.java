@@ -1,4 +1,4 @@
-package io.concurrency.chapter04.exam03;
+package io.concurrency.chapter04.exam05;
 
 public class ThreadLocalExample {
 
